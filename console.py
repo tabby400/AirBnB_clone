@@ -13,7 +13,7 @@ from models.state import State
 from models.city import City
 
 
-def parsing(arg):
+def pars(arg):
     curly_brace = re.search(r"\{(.*?)\}", arg)
     sq_bracket = re.search(r"\[(.*?)\]", arg)
     if curly_brace is None:
@@ -59,7 +59,7 @@ class HBNBCommand(cmd.Cmd):
             "show": self.do_show,
             "destroy": self.do_destroy,
             "count": self.do_count,
-            "update": self.do_update
+            "update": self.do_update,
             "create": self.do_create
         }
         match = re.search(r"\.", arg)
@@ -87,7 +87,7 @@ class HBNBCommand(cmd.Cmd):
         """a new class instance is created and
         id printed
         """
-        arglen = parse(arg)
+        arglen = pars(arg)
         if len(arglen) == 0:
             print("** class name missing **")
         elif arglen[0] not in HBNBCommand.__classes:
@@ -99,7 +99,7 @@ class HBNBCommand(cmd.Cmd):
     def do_show(self, arg):
         """used to show the string rep of a class instance
         """
-        arglen = parse(arg)
+        arglen = pars(arg)
         objdic = storage.all()
         if len(arglen) == 0:
             print("** class name missing **")
@@ -114,7 +114,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, arg):
         """deleting an instance of a class"""
-        arglen = parse(arg)
+        arglen = pars(arg)
         objdic = storage.all()
         if len(arglen) == 0:
             print("** class name missing **")
@@ -132,7 +132,7 @@ class HBNBCommand(cmd.Cmd):
         """this is used to show all the string rep of class instances
         if no class then objects instantiated"""
 
-        arglen = parse(arg)
+        arglen = pars(arg)
         if len(arglen) > 0 and arglen[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
@@ -146,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_count(self, arg):
         """this gets the number of instances of a class"""
-        arglen = parse(arg)
+        arglen = pars(arg)
         count = 0
         for obj in storage.all().values():
             if arglen[0] == obj.__class__.__name__:
@@ -155,7 +155,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_update(self, arg):
         """used in updating a specific class or attribute"""
-        arglen = parse(arg)
+        arglen = pars(arg)
         jdict = storage.all()
 
         if len(arglen) == 0:
