@@ -18,8 +18,9 @@ from models.user import User
 from models.state import State
 from models.place import Place
 
+
 class TestFileStorage_methods(unittest.TestCase):
-    """Unittests for testing methods of the FileStorage class."""
+    """testing methods of the FileStorage class."""
 
     @classmethod
     def setUp(self):
@@ -43,7 +44,7 @@ class TestFileStorage_methods(unittest.TestCase):
     def test_all(self):
         self.assertEqual(dict, type(models.storage.all()))
 
-    def test_all_with_arg(self):
+    def test_all_has_arg(self):
         with self.assertRaises(TypeError):
             models.storage.all(None)
 
@@ -77,11 +78,11 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn("Review." + rv.id, models.storage.all().keys())
         self.assertIn(rv, models.storage.all().values())
 
-    def test_new_with_args(self):
+    def test_new_has_args(self):
         with self.assertRaises(TypeError):
             models.storage.new(BaseModel(), 1)
 
-    def test_new_with_None(self):
+    def test_new_has_None(self):
         with self.assertRaises(AttributeError):
             models.storage.new(None)
 
@@ -142,32 +143,30 @@ class TestFileStorage_methods(unittest.TestCase):
         self.assertIn("Amenity." + am.id, objs)
         self.assertIn("Review." + rv.id, objs)
 
-    # def test_reload_no_file(self):
-    # self.assertRaises(FileNotFoundError, models.storage.reload())
-
-    def test_reload_with_arg(self):
+    def test_reload_has_arg(self):
         with self.assertRaises(TypeError):
             models.storage.reload(None)
 
 
-class TestFileStorage_instantiation(unittest.TestCase):
-    """Unittests for testing instantiation of the FileStorage class."""
+class TestFileStorage_instance(unittest.TestCase):
+    """testing instances in the FileStorage class."""
 
-    def test_FileStorage_instantiation_no_args(self):
+    def test_FileStorage_instantiation_non_args(self):
         self.assertEqual(type(FileStorage()), FileStorage)
 
-    def test_FileStorage_instantiation_with_arg(self):
+    def test_FileStorage_instantiation_has_arg(self):
         with self.assertRaises(TypeError):
             FileStorage(None)
 
-    def test_FileStorage_file_path_is_private_str(self):
+    def test_FileStorage_file_path_private_str(self):
         self.assertEqual(str, type(FileStorage._FileStorage__file_path))
 
-    def testFileStorage_objects_is_private_dict(self):
+    def testFileStorage_objects_private_dict(self):
         self.assertEqual(dict, type(FileStorage._FileStorage__objects))
 
-    def test_storage_initializes(self):
+    def test_storage_init(self):
         self.assertEqual(type(models.storage), FileStorage)
+
 
 if __name__ == "__main__":
     unittest.main()
