@@ -32,7 +32,7 @@ class FileStorage:
     def save(self):
         """objects are serialized to json"""
         obdict = FileStorage.__objects
-        objdict = {obj: odict[obj].to_dict() for obj in obdict.keys()}
+        objdict = {obj: obdict[obj].to_dict() for obj in obdict.keys()}
         with open(FileStorage.__file_path, "w") as fh:
             json.dump(objdict, fh)
 
@@ -42,7 +42,7 @@ class FileStorage:
             with open(FileStorage.__file_path) as fh:
                 objdict = json.load(fh)
                 for p in objdict.values():
-                    class_name = o["__class__"]
+                    class_name = p["__class__"]
                     del p["__class__"]
                     self.new(eval(class_name)(**p))
         except FileNotFoundError:
