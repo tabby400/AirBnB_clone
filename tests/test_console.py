@@ -1,16 +1,17 @@
 #!/usr/bin/python3
 
-"""Defines unittests for console.py.
-Unittest classes:
-    TestHBNBCommand_prompting
-    TestHBNBCommand_help
-    TestHBNBCommand_exit
-    TestHBNBCommand_create
-    TestHBNBCommand_show
-    TestHBNBCommand_all
-    TestHBNBCommand_destroy
-    TestHBNBCommand_update
+"""Displays unitests fo console.py
+unitests classes:
+    Test_HBNB_Command_help
+    Test_HBNB_Command_exit
+    Test_HBNB_Command_prompting
+    Test_HBNB_Command_create
+    Test_HBNB_Command_destroy
+    Test_HBNB_Command_count
+    Test_HBNB_Command_all
 """
+
+
 import os
 import sys
 import unittest
@@ -20,8 +21,8 @@ from console import HBNBCommand
 from io import StringIO
 from unittest.mock import patch
 
-class TestHBNBCommand_help(unittest.TestCase):
-    """Unittests for testing help messages of the HBNB command interpreter."""
+class Test_HBNB_Command_help(unittest.TestCase):
+    """Unittests for testing help message of the HBNB command interpreter."""
 
     def test_help_quit(self):
         h = "Quit command to exit the program."
@@ -92,8 +93,8 @@ class TestHBNBCommand_help(unittest.TestCase):
             self.assertEqual(h, output.getvalue().strip())
 
 
-class TestHBNBCommand_exit(unittest.TestCase):
-    """Unittests for testing exiting from the HBNB command interpreter."""
+class Test_HBNB_Command_exit(unittest.TestCase):
+    """Unittests for testing exiting from the HBNB command interpreter"""
 
     def test_quit_exits(self):
         with patch("sys.stdout", new=StringIO()) as output:
@@ -103,7 +104,7 @@ class TestHBNBCommand_exit(unittest.TestCase):
         with patch("sys.stdout", new=StringIO()) as output:
             self.assertTrue(HBNBCommand().onecmd("EOF"))
 
-class TestHBNBCommand_prompting(unittest.TestCase):
+class Test_HBNB_Command_prompting(unittest.TestCase):
     """Unittests for testing prompting of the HBNB command interpreter."""
 
     def test_prompt_string(self):
@@ -115,7 +116,7 @@ class TestHBNBCommand_prompting(unittest.TestCase):
             self.assertEqual("", output.getvalue().strip())
 
 
-class TestHBNBCommand_create(unittest.TestCase):
+class Test_HBNB_Command_create(unittest.TestCase):
     """Unittests for testing create from the HBNB command interpreter."""
 
     @classmethod
@@ -197,7 +198,7 @@ class TestHBNBCommand_create(unittest.TestCase):
             self.assertIn(testKey, storage.all().keys())
 
 
-class TestHBNBCommand_destroy(unittest.TestCase):
+class Test_HBNB_Command_destroy(unittest.TestCase):
     """Unittests for testing destroy from the HBNB command interpreter."""
 
     @classmethod
@@ -451,7 +452,7 @@ class TestHBNBCommand_destroy(unittest.TestCase):
             self.assertNotIn(obj, storage.all())
 
 
-class TestHBNBCommand_all(unittest.TestCase):
+class Test_HBNB_Command_all(unittest.TestCase):
     """Unittests for testing all of the HBNB command interpreter."""
 
     @classmethod
@@ -596,7 +597,7 @@ class TestHBNBCommand_all(unittest.TestCase):
             self.assertIn("Review", output.getvalue().strip())
             self.assertNotIn("BaseModel", output.getvalue().strip())
 
-class TestHBNBCommand_count(unittest.TestCase):
+class Test_HBNB_Command_count(unittest.TestCase):
     """Unittests for testing count method of HBNB comand interpreter."""
 
     @classmethod
