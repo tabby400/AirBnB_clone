@@ -25,7 +25,7 @@ class BaseModel:
 
         if kwargs:
             for key, val in kwargs.items():
-                if key == "created_at" or "updated_at":
+                if key == "created_at" or key == "updated_at":
                     self.__dict__[key] = datetime.strptime(val, date_fmt)
                     #  datetime.strptime converts val from
                     #  string to datetime object
