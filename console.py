@@ -109,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
 
         found = False
         inst_id = args[1]
-        key = "{}.{}".format(class_name, instance_id)
+        key = "{}.{}".format(class_name, inst_id)
         all_inst = models.storage.all()
         instance = all_inst.pop(key)
         if instance:
