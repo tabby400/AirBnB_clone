@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" This is the definition of a class BaseModel"""
+""" This is on the definition of a class BaseModel"""
 
 import models
 from datetime import datetime
@@ -17,7 +17,7 @@ class BaseModel:
         Args:
             **kwargs(dict): involves keyword arguements of attributes
             *args: arguements of any type passed
-            """
+        """
         date_fmt = "%Y-%m-%dT%H:%M:%S.%f"  # the format for date
         self.id = str(uuid4())
         self.created_at = datetime.today()
@@ -38,7 +38,7 @@ class BaseModel:
         """this updates the public instance att updated_at with
         current time"""
         self.updated_at = datetime.today()
-        models.storage.save
+        models.storage.save()
 
     def to_dict(self):
         """ this is used to return a dictionary of the
