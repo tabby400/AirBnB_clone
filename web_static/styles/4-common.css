@@ -1,0 +1,22 @@
+/*
+ * === Global style ===
+ */
+
+/* style Body */
+body {
+	color: #484848;
+	font: 14px Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+/* Container style */
+.container {
+	margin: 30px auto;
+	max-width: 1000px;
+
+}
+
+/* style strong*/
+strong {
+	font-weight: bold;
+}
